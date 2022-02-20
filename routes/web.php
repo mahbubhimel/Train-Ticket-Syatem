@@ -25,3 +25,10 @@ Route::get('/get-data', function () {
 
 Route::get('/tickets', 'TicketController@getTicketListView');
 Route::get('/ticket-data', 'TicketController@getTicketListData');
+
+Route::get('/home', 'TicketSearchController@getTrainListView');
+Route::get('/train-data', 'TicketSearchController@getSearch')->name('train-data');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

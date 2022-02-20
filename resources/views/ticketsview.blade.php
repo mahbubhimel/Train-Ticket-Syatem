@@ -60,7 +60,7 @@
                 var html = '';
                 $('#ticket-list-body').html('')
                 res.data.map(row => {
-
+                    console.log(typeof (res));
                     html += '<tr>';
                     html += '<td>' + row.name + '</td>';
                     html += '<td>' + row.name + '</td>';
