@@ -29,7 +29,7 @@ class TicketController extends Controller
         }
 
         $skip = $current_page * $per_page;
-        $data = Ticket::take($per_page)->skip($skip)->get();
+        $data = Ticket::all();
 //        $data = Ticket::all();
 
         foreach ($data as $obj) {
