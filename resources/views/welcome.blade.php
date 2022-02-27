@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Ticket System</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -84,35 +84,36 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Ticket System
                 </div>
 
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                    <a id="res">{{$x}}</a>
-                </div>
+{{--                <div class="links">--}}
+{{--                    <a href="https://laravel.com/docs">Docs</a>--}}
+{{--                    <a href="https://laracasts.com">Laracasts</a>--}}
+{{--                    <a href="https://laravel-news.com">News</a>--}}
+{{--                    <a href="https://blog.laravel.com">Blog</a>--}}
+{{--                    <a href="https://nova.laravel.com">Nova</a>--}}
+{{--                    <a href="https://forge.laravel.com">Forge</a>--}}
+{{--                    <a href="https://github.com/laravel/laravel">GitHub</a>--}}
+{{--                    <a id="res">{{$x}}</a>--}}
+{{--                </div>--}}
+
             </div>
         </div>
     </body>
-    <script>
-        $.ajax({
-            url: 'get-data',
-            type: 'GET',
-            data: {key: 'bangladesh'},
-            success: function(res) {
-                console.log(res);
-                $("#res").html(res.name)
-            }
+{{--    <script>--}}
+{{--        $.ajax({--}}
+{{--            url: 'get-data',--}}
+{{--            type: 'GET',--}}
+{{--            data: {key: 'bangladesh'},--}}
+{{--            success: function(res) {--}}
+{{--                console.log(res);--}}
+{{--                $("#res").html(res.name)--}}
+{{--            }--}}
 
-        })
+{{--        })--}}
 
-    </script>
+{{--    </script>--}}
 
 </html>

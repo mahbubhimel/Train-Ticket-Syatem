@@ -13,12 +13,12 @@ class CreatePurchasedTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchased_tickets', function (Blueprint $table) {
+        Schema::create('purchased__tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user-id');
-            $table->string('ticket-id');
-            $table->string('journey-date');
-            $table->string('time');
+            $table->string('user_id');
+            $table->string('user_name');
+            $table->string('ticket_id');
+            $table->string('journey_date');
         });
     }
 
@@ -29,6 +29,6 @@ class CreatePurchasedTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchased_tickets');
+        Schema::dropIfExists('purchased__tickets');
     }
 }
