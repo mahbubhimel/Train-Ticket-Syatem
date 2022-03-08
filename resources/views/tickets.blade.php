@@ -66,8 +66,8 @@
 {{--    alert message show here--}}
 
 
-    <div class="row">
-        <div class="col" id="train-list">
+    <div class="row" id="train-list" style="display: none">
+        <div class="col">
             <h3>Train Data</h3>
             <table class="table">
                 <thead>
@@ -88,13 +88,32 @@
     </div>
 
     <div class="row" id="purchaseID" style="display: none">
-        @include('purchaseHistory')
+        <div class="col-sm">
+            <h3>Purchase History</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Train</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Journey Date</th>
+                </tr>
+                </thead>
+                <tbody id="purchase-list-body">
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 </body>
 
 
 <script>
+
+    var user = {!! \Illuminate\Support\Facades\Auth::user() !!};
 
     function values_of_from(){
         var train_from = $('#from').val();
@@ -181,12 +200,54 @@
                     $('.alert').show()
                     $('.alert').html("No Trains Available!");
                 }
+            }
 
+        })
+    }
+
+    function get_purchaseHistory_Data() {
+
+        $.ajax({
+            url: 'get-history',
+            type: 'GET',
+            data: {id : user.id},
+
+            success: function (res) {
+                console.log(res.data[0]);
+                if (res.data.length >0) {
+                    var html = '';
+                    $('#ticket-list-body').html('')
+                    res.data.map(row => {
+                        var url = '{{url("/")}}/purchased/?id=' + row.id+'&user=' + user.id+'&user_name=' + user.name+'&train_id=' + row.train_id;
+                        var url = '{{url("/")}}/tickets/?id=' + row.id;
+                        console.log(typeof (res));
+                        html += '<tr>';
+                        html += '<td>' + row.user_name + '</td>';
+                        html += '<td>' + row.name + '</td>';
+                        html += '<td>' + row.from + '</td>';
+                        html += '<td>' + row.to + '</td>';
+                        html += '<td>' + row.real_price + '</td>';
+                        html += '<td>' + row.journey_date + '</td>';
+
+                        html += '</tr>';
+
+                    })
+                    $('#purchase-list-body').html(html);
+                    $('.alert').hide();
+
+                }
+                else {
+                    // alert("No purchase history!");
+                    $('.alert').show();
+                    $('.alert').html("No purchase history!");
+                }
 
             }
 
         })
     }
+
+
 
 
     $('#findBtn').on('click', function () {
@@ -197,10 +258,12 @@
     })
 
     $('#purchaseBtn').on('click', function (){
-        $('#purchaseID').show();
-        console.log("button clicked from purchase button")
+        get_purchaseHistory_Data();
         $('#train-list').hide();
-        $('.alert').hide();
+        $('#purchaseID').show();
+
+        console.log("button clicked from purchase button")
+
     })
 
 

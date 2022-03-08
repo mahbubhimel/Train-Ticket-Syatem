@@ -74,6 +74,7 @@
     var user = {!! \Illuminate\Support\Facades\Auth::user() !!};
 
 
+
     function getData() {
 
         $.ajax({
